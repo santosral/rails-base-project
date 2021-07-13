@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dhtkfzht7
+  api_key: '175956643972594'
+  api_secret: gB3nZkDGQ7YmmYUYiixnoJSPjZY
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dhtkfzht7
+  api_key: '175956643972594'
+  api_secret: gB3nZkDGQ7YmmYUYiixnoJSPjZY
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dhtkfzht7
+  api_key: '175956643972594'
+  api_secret: gB3nZkDGQ7YmmYUYiixnoJSPjZY
+  enhance_image_tag: true
+  static_file_support: false

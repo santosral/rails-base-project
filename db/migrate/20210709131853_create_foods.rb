@@ -7,6 +7,7 @@ class CreateFoods < ActiveRecord::Migration[6.0]
       t.integer :comment_id
       t.string :caption
       t.string :recipe_url
+      t.string :image
       t.timestamps
     end
   end

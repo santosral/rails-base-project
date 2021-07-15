@@ -97,21 +97,9 @@ ActiveRecord::Schema.define(version: 2021_07_10_031959) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< HEAD
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.string "food_group"
-=======
-  create_table "food_groups", force: :cascade do |t|
-    t.string "food_name"
-    t.string "group_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "foods", force: :cascade do |t|
-    t.string "food_name"
->>>>>>> for api testing
     t.integer "user_id"
     t.integer "comment_id"
     t.string "caption"
@@ -130,7 +118,6 @@ ActiveRecord::Schema.define(version: 2021_07_10_031959) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< HEAD
   create_table "nutritionists", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -155,6 +142,10 @@ ActiveRecord::Schema.define(version: 2021_07_10_031959) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
@@ -163,55 +154,4 @@ ActiveRecord::Schema.define(version: 2021_07_10_031959) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-=======
-  create_table "stocks", force: :cascade do |t|
-    t.string "company"
-    t.float "price"
-    t.string "ticker"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.float "change_percent"
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.integer "stock_id"
-    t.integer "broker_id"
-    t.string "company"
-    t.float "price"
-    t.float "total_price"
-    t.integer "quantity"
-    t.string "ticker"
-    t.datetime "created_at", precision: 6, null: false
-    t.integer "buyer_id"
-    t.string "buyer"
-    t.string "seller"
-  end
-
-  create_table "user_stocks", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "stock_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["stock_id"], name: "index_user_stocks_on_stock_id"
-    t.index ["user_id"], name: "index_user_stocks_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "role"
-    t.string "status"
-    t.float "money"
-    t.string "password_digest"
-    t.string "email"
-    t.string "username"
-    t.string "broker_role"
-    t.string "first_name"
-    t.string "last_name"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
-  end
-
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "user_stocks", "stocks"
-  add_foreign_key "user_stocks", "users"
->>>>>>> for api testing
 end

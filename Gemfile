@@ -18,7 +18,7 @@ gem 'hamlit-rails'
 gem 'react-rails', '~> 2.6', '>= 2.6.1'
 gem 'cloudinary', '~> 1.20'
 gem 'carrierwave'
-gem 'carrierwave-base64'
+gem 'openssl', '~> 2.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

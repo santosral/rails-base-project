@@ -58,54 +58,35 @@ ActiveRecord::Schema.define(version: 2021_07_13_091910) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "broker_stocks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "stock_id"
-    t.string "company"
-    t.float "price"
-    t.string "ticker"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "buyer_stocks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "stock_id"
-    t.string "company"
-    t.float "price"
-    t.float "total_price"
-    t.integer "quantity"
-    t.string "ticker"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.float "change_percent"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.string "food_name"
     t.integer "user_id"
     t.integer "nutritionist_id"
     t.boolean "like"
     t.string "comment"
-    t.integer "articles_id"
+    t.integer "article_id"
+    t.integer "food_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "foods", force: :cascade do |t|
-    t.string "name"
+    t.string "food_name"
+    t.string "food_key"
     t.string "food_group"
     t.integer "user_id"
     t.integer "comment_id"
     t.string "caption"
     t.string "recipe_url"
+    t.string "image"
+    t.string "authenticity_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
   end
 
   create_table "nutritional_informations", force: :cascade do |t|
     t.string "food_name"
+    t.integer "food_id"
     t.string "label"
     t.float "quantity"
     t.string "unit"

@@ -5,12 +5,14 @@
 <% end %>
 
 <% if @foods_recognized != nil %>
-  <% @foods_recognized['recognition_results'].each do |food| %>
+<%= cl_image_tag(@food.food_key, :width=>100, :height=>100)%>
+    <% @foods_recognized['recognition_results'].each do |food| %>
     <%= link_to food['name'], nutrition_path(food_name: food['name']) %>
   <% end %>
-  <%= cl_image_tag(@food.food_key, :width=>100, :height=>100)%>
 <% end %>
 
 <% if @nutrition != nil %>
+  <%= cl_image_tag(@image, :width=>100, :height=>100)%>
+  <%= @name %>
   <%= @nutrition['parsed'][0]['food']['nutrients']%>
 <% end %>

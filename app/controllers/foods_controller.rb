@@ -4,18 +4,24 @@ class FoodsController < ApplicationController
   require 'openssl'
   require 'carrierwave/orm/activerecord'
   require 'json'
+  
+  def index
+    @foods = Food.all
+  end
   def new
     @food = Food.new
   end
   def create
     @food = Food.create(food_params)
     food_api = find_food(File.open(@food.image.current_path))
-    Rails.logger.debug @foods_recognized = food_api
     Cloudinary::Uploader.upload(@food.image.current_path, :public_id => @food.food_key)
+    Rails.logger.debug @foods_recognized = food_api
     render :new
   end
 
   def nutritional_info
+    @image = Food.last.food_key
+    @name = params[:food_name]
     url_food = 'https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + params[:food_name]
     url = URI(url_food)
 
@@ -30,6 +36,7 @@ class FoodsController < ApplicationController
     response = http.request(request)
     @nutrition = JSON.parse(response.read_body)
     render :new
+
   end
 
   private
@@ -41,7 +48,7 @@ class FoodsController < ApplicationController
     https.use_ssl = true
     request = Net::HTTP::Post.new(url)
     request['Content-Type'] = 'multipart/form-data'
-    request['Authorization'] = 'Bearer 6f5e042ab5ba3aff41749ffb07b926519a3139a5'
+    request['Authorization'] = 'Bearer 2c9ec17ea3987d47c09efce7f8c93f50ab168483'
     request.set_form form_data, 'multipart/form-data'
     response = https.request(request)
     JSON.parse(response.read_body)

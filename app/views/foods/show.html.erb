@@ -19,7 +19,7 @@
 <% end %>
 
 <%= link_to 'Edit', edit_food_path(@food) %>
-<%= link_to 'Delete', food_path(@food), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= button_to 'Delete', food_path(@food), method: :delete, data: { confirm: "Are you sure?" } %>
 
 <%= render 'comments/comments', commentable: @food %>
 <%= render 'comments/form', commentable: @food %>

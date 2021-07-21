@@ -94,7 +94,7 @@ class FoodsController < ApplicationController
     https.use_ssl = true
     request = Net::HTTP::Post.new(url)
     request['Content-Type'] = 'multipart/form-data'
-    request['Authorization'] = 'Bearer 1fd824df5f1b65a8c7810642d22af03400f53fdd'
+    request['Authorization'] = 'Bearer f803bfd824dbfe797524eebb2d3c210b67f0d95c'
     request.set_form form_data, 'multipart/form-data'
     response = https.request(request)
     JSON.parse(response.read_body)

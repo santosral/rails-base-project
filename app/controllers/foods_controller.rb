@@ -23,7 +23,7 @@ class FoodsController < ApplicationController
   def create
     @food = current_user.foods.create(food_params)
     food_api = find_food(File.open(@food.image.current_path))
-    Cloudinary::Uploader.upload(@food.image.current_path, :public_id => @food.food_key)
+    Cloudinary::Uploader.upload(@food.image.current_path, public_id: @food.food_key)
     Rails.logger.debug @foods_recognized = food_api
     render :new
   end
@@ -34,7 +34,7 @@ class FoodsController < ApplicationController
     # @food.food_group = params[:food_group]
     @food.food_name = params[:food_name]
     @food.save
-    url_food = 'https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + params[:food_name]
+    url_food = "https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=#{params[:food_name]}"
     url = URI(url_food)
 
     http = Net::HTTP.new(url.host, url.port)
@@ -42,23 +42,21 @@ class FoodsController < ApplicationController
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     request = Net::HTTP::Get.new(url)
-    request["x-rapidapi-key"] = 'ef49aa5439mshc227905b2f5affep1e0ed8jsn44f99977d013'
-    request["x-rapidapi-host"] = 'edamam-food-and-grocery-database.p.rapidapi.com'
+    request['x-rapidapi-key'] = 'ef49aa5439mshc227905b2f5affep1e0ed8jsn44f99977d013'
+    request['x-rapidapi-host'] = 'edamam-food-and-grocery-database.p.rapidapi.com'
 
     response = http.request(request)
     @nutrition = JSON.parse(response.read_body)
 
-    energy = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Energy', quantity: @nutrition['parsed'][0]['food']['nutrients']['ENERC_KCAL'], unit: 'kcal')
-    protein = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Protein', quantity: @nutrition['parsed'][0]['food']['nutrients']['PROCNT'], unit: 'g')
-    fat = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Fat', quantity: @nutrition['parsed'][0]['food']['nutrients']['FAT'], unit: 'g')
-    carbs = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Carbohydrates', quantity: @nutrition['parsed'][0]['food']['nutrients']['CHOCDF'], unit: 'g')
-    fibre = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Fibre', quantity: @nutrition['parsed'][0]['food']['nutrients']['FIBTG'], unit: 'g')
+    @food.nutritional_informations.create(food_name: @food.food_name, label: 'Energy', quantity: @nutrition['parsed'][0]['food']['nutrients']['ENERC_KCAL'], unit: 'kcal')
+    @food.nutritional_informations.create(food_name: @food.food_name, label: 'Protein', quantity: @nutrition['parsed'][0]['food']['nutrients']['PROCNT'], unit: 'g')
+    @food.nutritional_informations.create(food_name: @food.food_name, label: 'Fat', quantity: @nutrition['parsed'][0]['food']['nutrients']['FAT'], unit: 'g')
+    @food.nutritional_informations.create(food_name: @food.food_name, label: 'Carbohydrates', quantity: @nutrition['parsed'][0]['food']['nutrients']['CHOCDF'], unit: 'g')
+    @food.nutritional_informations.create(food_name: @food.food_name, label: 'Fibre', quantity: @nutrition['parsed'][0]['food']['nutrients']['FIBTG'], unit: 'g')
 
     deletable = @foods.where(food_name: nil)
-    if deletable != nil
-      deletable.destroy_all
-    end
-    
+    deletable&.destroy_all
+
     redirect_to food_path(@food)
   end
 

@@ -24,5 +24,4 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :foods  
   get '/api-fetch' => 'foods#api_fetch', as: 'api_fetch'
-  get '/nutritional' => 'foods#nutritional_info', as: 'nutrition'
 end

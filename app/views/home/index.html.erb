@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
-  <h1>Hi user! welcome to the newsfeed of bouffage</h1>
-  <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+  <h1>Hi <%= @cur_user.username %>! welcome to the newsfeed of bouffage</h1>
+  <%= link_to 'Log out', destroy_user_session_path %>
   <%= render 'newsfeed' %>
   <%= link_to 'New Post', new_food_path %>
 <% elsif nutritionist_signed_in? %>
-  <h1>Hi nutritionist! welcome newsfeed of bouffage</h1>
-  <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+  <h1>Hi <%= @cur_user.username %>! welcome newsfeed of bouffage</h1>
+  <%= link_to 'Log out', destroy_nutritionist_session_path %>
   <%= render 'newsfeed' %>
   <%= link_to 'New Post', new_article_path %>
 <% elsif admin_signed_in? %>
@@ -19,7 +19,7 @@
       <li><%= link_to "Approve", approve_path(nutritionist), method: :get %>
     </ul>
   <% end %>
-  <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+  <%= link_to 'Log out', destroy_admin_session_path %>
 <% else %>
   <h1>Welcome to bouffage please sign up or sign in!</h1>
   <%= link_to 'User Sign Up', new_user_registration_path %>

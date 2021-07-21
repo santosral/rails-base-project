@@ -29,9 +29,11 @@ class FoodsController < ApplicationController
   end
 
   def nutritional_info
-    @foods = current_user.foods.all.sort_by(&:created_at).reverse
-    @food = @foods.where(food_name: nil).first
+    @foods = current_user.foods.all
+    @food = @foods.where(food_name: nil).last
+    # @food.food_group = params[:food_group]
     @food.food_name = params[:food_name]
+    @food.save
     url_food = 'https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + params[:food_name]
     url = URI(url_food)
 
@@ -92,7 +94,7 @@ class FoodsController < ApplicationController
     https.use_ssl = true
     request = Net::HTTP::Post.new(url)
     request['Content-Type'] = 'multipart/form-data'
-    request['Authorization'] = 'Bearer e9ad453f317d21955956a7f8f7dbe0385ee34562'
+    request['Authorization'] = 'Bearer 1fd824df5f1b65a8c7810642d22af03400f53fdd'
     request.set_form form_data, 'multipart/form-data'
     response = https.request(request)
     JSON.parse(response.read_body)

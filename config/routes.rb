@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   devise_for :admins
   devise_for :nutritionists
-  devise_for :users
+  devise_for :users, path: 'devise'
 
   root 'home#index'
   get '/home/approve/:id' => 'home#approve', as: 'approve'
 
-  resources :users, only: %i[show]
+  resources :users
   get '/users/:user_id/foods/:id' => 'users#food', as: 'user_food'
 
-  resources :nutritionists, only: %i[show]
+  resources :nutritionists
   get '/nutritionists/:nutritionist_id/articles/:id' => 'nutritionists#article', as: 'nutritionist_article'
 
   resources :foods

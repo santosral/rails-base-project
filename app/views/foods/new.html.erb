@@ -1,16 +1,9 @@
-<%= form_with model: @food do |f| %>
-  <%= f.hidden_field :food_key, value: "#{SecureRandom.hex(10)}" %>
-  <%= f.file_field :image %>
-  <%= f.submit "Upload" %>  
-<% end %>
+<h1> Post a food in Bouffage </h1>
+<%= render "form", food: @food %>
 
 <% if @foods_recognized != nil %>
+  <%= cl_image_tag(@food.food_key, :width=>100, :height=>100)%>
   <% @foods_recognized['recognition_results'].each do |food| %>
     <%= link_to food['name'], nutrition_path(food_name: food['name']) %>
   <% end %>
-  <%= cl_image_tag(@food.food_key, :width=>100, :height=>100)%>
-<% end %>
-
-<% if @nutrition != nil %>
-  <%= @nutrition['parsed'][0]['food']['nutrients']%>
 <% end %>

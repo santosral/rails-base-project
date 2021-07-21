@@ -1,17 +1,25 @@
-<div class="posts">
-  <% @foods.each do |food| %>
-    <section class="post">
-    <%= cl_image_tag(food.id, :width=>100, :height=>100)%>
-        <div class="description">
-            <%= food.caption %>
-        </div>
-    </section>
-  <% end %>
-</div>
+<h1><%= @food.food_name %></h1>
+<%= cl_image_tag(@food, :width=>100, :height=>100)%>
+<table>
+  <tr>
+    <td><%= @food.caption %></td>
+    <td><%= @food.recipe_url %></td>
+  </tr>
+</table>
 
-<% if @foods_recognized != nil %>
-  <% @foods_recognized['recognition_results'].each do |food| %>
-    <%= food['name']  %>
-  <% end %>
-  <%= cl_image_tag(@food.id, :width=>100, :height=>100)%>
+  
+<%= @nutrition.each do |nutrition|%>
+  <table>
+    <tr>
+      <td><%= nutrition.label %></td>
+      <td><%= nutrition.quantity %></td>
+      <td><%= nutrition.unit %></td>
+    </tr>
+  </table>
 <% end %>
+
+<%= link_to 'Edit', edit_food_path(@food) %>
+<%= link_to 'Delete', food_path(@food), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%= render 'comments/comments', commentable: @food %>
+<%= render 'comments/form', commentable: @food %>

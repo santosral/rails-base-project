@@ -1,6 +1,6 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
-
+  
   storage :file
   version :simple do
     process :resize_to_fill => [164, 164, :fill]

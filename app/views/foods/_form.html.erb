@@ -1,0 +1,41 @@
+<%= form_with model: food do |f| %>
+  <% food.errors.full_messages_for(:user_username).each do |message| %>
+    <%= message %>
+  <% end %>
+
+  <% food.errors.full_messages_for(:food_key).each do |message| %>
+    <%= message %>
+  <% end %>
+
+  <% food.errors.full_messages_for(:caption).each do |message| %>
+    <%= message %>
+  <% end %>
+
+  <% food.errors.full_messages_for(:recipe_url).each do |message| %>
+    <%= message %>
+  <% end %>
+
+  <%= f.hidden_field :user_username, value:current_user.username %>
+
+  <%= f.hidden_field :food_key, value: "#{SecureRandom.hex(10)}" %>
+
+  <div class="field">
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :caption %><br />
+    <%= f.text_area :caption, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :recipe_url %><br />
+    <%= f.text_field :recipe_url, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Post" %>
+  </div>
+
+<% end %>
+

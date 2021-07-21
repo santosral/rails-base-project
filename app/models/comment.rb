@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  validates :comment, presence: true
+  validates :commenter, presence: true
+  validates :body, presence: true
   belongs_to :food
-  belongs_to :article
 end

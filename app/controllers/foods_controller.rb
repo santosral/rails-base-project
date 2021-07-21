@@ -1,21 +1,37 @@
+require 'uri'
+require 'net/http'
+require 'openssl'
+require 'carrierwave/orm/activerecord'
+require 'json'
 class FoodsController < ApplicationController
-  require 'uri'
-  require 'net/http'
-  require 'openssl'
-  require 'carrierwave/orm/activerecord'
-  require 'json'
-  def new
-    @food = Food.new
+  before_action :authenticate_user!
+
+  def index
+    @foods = current_user.foods.all.sort_by(&:updated_at).reverse
   end
+
+  def show
+    @cur_user = current_user
+    @food = current_user.foods.find(params[:id])
+    @nutrition = @food.nutritional_informations.all
+  end
+
+  def new
+    @food = current_user.foods.new
+  end
+
   def create
-    @food = Food.create(food_params)
+    @food = current_user.foods.create(food_params)
     food_api = find_food(File.open(@food.image.current_path))
-    Rails.logger.debug @foods_recognized = food_api
     Cloudinary::Uploader.upload(@food.image.current_path, :public_id => @food.food_key)
+    Rails.logger.debug @foods_recognized = food_api
     render :new
   end
 
   def nutritional_info
+    @foods = current_user.foods.all.sort_by(&:created_at).reverse
+    @food = @foods.where(food_name: nil).first
+    @food.food_name = params[:food_name]
     url_food = 'https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + params[:food_name]
     url = URI(url_food)
 
@@ -29,23 +45,59 @@ class FoodsController < ApplicationController
 
     response = http.request(request)
     @nutrition = JSON.parse(response.read_body)
-    render :new
+
+    energy = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Energy', quantity: @nutrition['parsed'][0]['food']['nutrients']['ENERC_KCAL'], unit: 'kcal')
+    protein = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Protein', quantity: @nutrition['parsed'][0]['food']['nutrients']['PROCNT'], unit: 'g')
+    fat = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Fat', quantity: @nutrition['parsed'][0]['food']['nutrients']['FAT'], unit: 'g')
+    carbs = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Carbohydrates', quantity: @nutrition['parsed'][0]['food']['nutrients']['CHOCDF'], unit: 'g')
+    fibre = @food.nutritional_informations.create(food_name: @food.food_name, label: 'Fibre', quantity: @nutrition['parsed'][0]['food']['nutrients']['FIBTG'], unit: 'g')
+
+    deletable = @foods.where(food_name: nil)
+    if deletable != nil
+      deletable.destroy_all
+    end
+    
+    redirect_to food_path(@food)
+  end
+
+  def edit
+    @food = current_user.foods.find(params[:id])
+  end
+
+  def update
+    @food = current_user.foods.find(params[:id])
+
+    if @food.update(food_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @food = current_user.foods.find(params[:id])
+    @food.destroy
+
+    redirect_to root_path
   end
 
   private
+
   def food_params
-    params.require(:food).permit(:food_key, :image, :authenticity_token, :commit, :form_data)
+    params.require(:food).permit(:user_username, :food_key, :image, :commit, :form_data, :caption, :recipe_url)
   end
+
   def request_api(url, form_data)
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
     request = Net::HTTP::Post.new(url)
     request['Content-Type'] = 'multipart/form-data'
-    request['Authorization'] = 'Bearer 6f5e042ab5ba3aff41749ffb07b926519a3139a5'
+    request['Authorization'] = 'Bearer e9ad453f317d21955956a7f8f7dbe0385ee34562'
     request.set_form form_data, 'multipart/form-data'
     response = https.request(request)
     JSON.parse(response.read_body)
   end
+
   def find_food(image_path)
     request_api(URI('https://api.logmeal.es/v2/recognition/complete/v0.9?skip_types=[1,3]&language=eng'), [['image', image_path]])
   end

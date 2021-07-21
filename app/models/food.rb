@@ -1,9 +1,8 @@
 class Food < ApplicationRecord
-  include Rails.application.routes.url_helpers
-
-  belongs_to :food_group
+  # validates :name, presence: true
+  # validates :food_group, presence: true
   belongs_to :user
-  has_many :comments
-  has_many :nutritional_informations
+  has_many :comments, dependent: :destroy
+  has_many :nutritional_informations, dependent: :destroy
   mount_uploader :image, ImageUploader
 end

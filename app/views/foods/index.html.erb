@@ -2,10 +2,8 @@
 <% @foods.each do |food| %>
   <table>
       <tr>
-        <td><%= link_to food.name, food_path(food) %></td>
-        <td><%= food.food_group %></td>
-        <td><%= food.caption %></td>
-        <td><%= food.recipe_url %></td>
+        <td><%= link_to food.food_name, food_path(food) %></td>
+        <td><%= cl_image_tag(food.food_key, :width=>100, :height=>100)%></td>
       </tr>
     </table>
 <% end %>

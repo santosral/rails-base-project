@@ -3,11 +3,7 @@
     <%= message %>
   <% end %>
 
-  <% food.errors.full_messages_for(:name).each do |message| %>
-    <%= message %>
-  <% end %>
-
-  <% food.errors.full_messages_for(:food_group).each do |message| %>
+  <% food.errors.full_messages_for(:food_key).each do |message| %>
     <%= message %>
   <% end %>
 
@@ -19,19 +15,12 @@
     <%= message %>
   <% end %>
 
-  
-  <div class="field">
-    <%= f.text_field :user_username, autofocus: true, value:current_user.username, placeholder:"username" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :name, "Food Name" %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+  <%= f.hidden_field :user_username, value:current_user.username %>
+
+  <%= f.hidden_field :food_key, value: "#{SecureRandom.hex(10)}" %>
 
   <div class="field">
-    <%= f.label :food_group, "Food Group" %><br />
-    <%= f.text_field :food_group, autofocus: true, autocomplete: "food_group" %>
+    <%= f.file_field :image %>
   </div>
 
   <div class="field">
@@ -49,3 +38,4 @@
   </div>
 
 <% end %>
+

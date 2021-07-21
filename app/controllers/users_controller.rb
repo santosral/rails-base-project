@@ -8,11 +8,12 @@ class UsersController < ApplicationController
   def food
     @selected_user = User.find(params[:user_id])
     @food = @selected_user.foods.find(params[:id])
+    @nutrition = @food.nutritional_informations.all
   end
 
   private
 
   def food_params
-    params.require(:food).permit(:user_username, :name, :food_group, :caption, :recipe_url)
+    params.require(:food).permit(:user_username, :food_name, :food_key, :caption, :recipe_url)
   end
 end

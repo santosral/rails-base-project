@@ -56,11 +56,13 @@ ActiveRecord::Schema.define(version: 2021_07_18_054442) do
 
   create_table "foods", force: :cascade do |t|
     t.string "user_username"
-    t.string "name"
+    t.string "food_name"
+    t.string "food_key"
     t.string "food_group"
     t.integer "user_id"
     t.string "caption"
     t.string "recipe_url"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   get '/nutritionists/:nutritionist_id/articles/:id' => 'nutritionists#article', as: 'nutritionist_article'
 
   resources :foods
+  get '/nutritional' => 'foods#nutritional_info', as: 'nutrition'
   resources :comments, only: %i[create destroy]
 
   resources :articles
   resources :acomments, only: %i[create destroy]
-
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
   # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

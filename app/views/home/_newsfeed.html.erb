@@ -4,14 +4,12 @@
       <tr>
         <% if user_signed_in? && current_user.id == post.user_id %>
           <td><%= link_to post.user_username, foods_path %></td>
-          <td><%= link_to post.name, food_path(post.id) %></td>
+          <td><%= link_to post.food_name, food_path(post.id) %></td>
         <% else %>
           <td><%= link_to post.user_username, user_path(post.user_id) %></td>
-          <td><%= link_to post.name, user_food_path(post.user_id, post.id) %></td>
+          <td><%= link_to post.food_name, user_food_path(post.user_id, post.id) %></td>
         <% end %>
-        <td><%= post.food_group %></td>
-        <td><%= post.caption %></td>
-        <td><%= post.recipe_url %></td>
+        <td><%= cl_image_tag(post.food_key, :width=>100, :height=>100)%></td>
       </tr>
     </table>
   <% else %>

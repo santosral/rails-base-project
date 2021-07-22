@@ -3,8 +3,8 @@ class CreateArticles < ActiveRecord::Migration[6.0]
     create_table :articles do |t|
       t.string :nutritionist_username
       t.integer :nutritionist_id
+      t.string :title
       t.string :caption
-      t.string :source_url
       t.timestamps 
     end
   end

@@ -11,19 +11,16 @@
       <%= message %>
     <% end %>
   
-    
+    <%= f.text_field :nutritionist_username, autofocus: true, value:current_nutritionist.username, placeholder:"username", class:"hidden" %>
+
     <div class="field">
-      <%= f.text_field :nutritionist_username, autofocus: true, value:current_nutritionist.username, placeholder:"username" %>
+      <%= f.label :title %><br />
+      <%= f.text_area :title, autofocus: true %>
     </div>
-  
+
     <div class="field">
       <%= f.label :caption %><br />
-      <%= f.text_area :caption, autofocus: true %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :source_url %><br />
-      <%= f.text_field :source_url, autofocus: true %>
+      <%= f.rich_text_area :caption, autofocus: true %>
     </div>
   
     <div class="actions">

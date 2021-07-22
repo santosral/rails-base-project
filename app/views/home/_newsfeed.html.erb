@@ -17,10 +17,10 @@
       <tr>
         <% if nutritionist_signed_in? && current_nutritionist.id == post.nutritionist_id %>
           <td><%= link_to post.nutritionist_username, articles_path %></td>
-          <td><%= link_to post.caption, article_path(post.id) %></td>
+          <td><%= link_to post.title, article_path(post.id) %></td>
         <% else %>
           <td><%= link_to post.nutritionist_username, nutritionist_path(post.nutritionist_id) %></td>
-          <td><%= link_to post.caption, nutritionist_article_path(post.nutritionist_id, post.id) %></td>
+          <td><%= link_to post.title, nutritionist_article_path(post.nutritionist_id, post.id) %></td>
         <% end %>
         <td><%= post.source_url %></td>
       </tr>

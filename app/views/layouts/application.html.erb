@@ -13,9 +13,10 @@
     <% if user_signed_in? || nutritionist_signed_in? || admin_signed_in? %>
       <%= render 'home/sidenav' %>
     <% end %>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="w-3/4 overflow-y-auto">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>

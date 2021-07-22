@@ -1,7 +1,5 @@
 <%= form_with model: commentable.comments.build do |f| %>
-  <div class="field">
-    <%= f.number_field :food_id, value: commentable.id %>
-  </div>
+  <%= f.number_field :food_id, value: commentable.id, class:"hidden" %>
 
   <div class="field">
     <%= f.text_area :body, placeholder:"Add a comment" %>

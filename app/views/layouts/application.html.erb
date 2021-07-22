@@ -9,7 +9,11 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="relative min-h-screen flex overflow-hidden">
+    <% if user_signed_in? || nutritionist_signed_in? || admin_signed_in? %>
+      <%= render 'home/sidenav' %>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

@@ -6,22 +6,22 @@
     
   <nav>
     <% if user_signed_in? %>
-      <%= link_to "Newsfeed", root_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
-      <%= link_to "My Foods", foods_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
-      <%= link_to "Create Post", new_food_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
-      <%= link_to "Log out", destroy_user_session_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
+      <%= link_to "Newsfeed", root_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
+      <%= link_to "My Foods", foods_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
+      <%= link_to "Create Post", new_food_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
+      <%= link_to "Log out", destroy_user_session_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
     <% end %>
 
     <% if nutritionist_signed_in? %>
-      <%= link_to "Newsfeed", root_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
-      <%= link_to "My Articles", articles_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
-      <%= link_to "Create Post", new_article_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
-      <%= link_to "Log out", destroy_nutritionist_session_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
+      <%= link_to "Newsfeed", root_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
+      <%= link_to "My Articles", articles_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
+      <%= link_to "Create Post", new_article_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
+      <%= link_to "Log out", destroy_nutritionist_session_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
     <% end %>
 
     <% if admin_signed_in? %>
-      <%= link_to "Approval", root_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
-      <%= link_to "Log out", destroy_admin_session_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-red-400 cursor-pointer hover:text-white" %>
+      <%= link_to "Approval", root_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
+      <%= link_to "Log out", destroy_admin_session_path, class:"block py-3 px-5 text-gray-50 text-xl font-bold rounded transition duration-200 hover:bg-green-500 cursor-pointer hover:text-white" %>
     <% end %>
     
   </nav>

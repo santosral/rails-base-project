@@ -1,8 +1,9 @@
-<h1><%= current_nutritionist.username %>'s POSTS</h1>
-<% @articles.each do |article| %>
-  <table>
-      <tr>
-        <td><%= link_to article.title, article_path(article) %></td>
-      </tr>
-  </table>
-<% end %>
+<h1 class="px-2 text-2xl font-bold text-red-600">My Articles</h1><br/>
+<div class="grid px-2 grid-cols-3 gap-3">
+  <% @articles.each do |article| %>
+    <div class="mx-auto my-auto border-2 border-red-600 rounded-md text-red-600">
+      <img alt="ecommerce" class="lg:w-full w-full lg:h-auto object-cover object-center rounded" src="https://dummyimage.com/300x200">
+      <h1 class="text-lg px-1 font-bold capitalize"><%= link_to article.title, article_path(article) %></h1>
+    </div>
+  <% end %>
+</div>

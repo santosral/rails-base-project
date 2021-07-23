@@ -1,10 +1,26 @@
-<h1><%= current_nutritionist.username %></h1><br>
-<h1><%= @article.title %></h1><br>
-<h2><%= @article.caption %></h1>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="grid grid-cols-3">
+    <div class="col-span-2 border-r-4 border-red-600">
+      <div class="box-border bg-gradient-to-b from-yellow-400 h-52 w-full">
+        <center>
+          <h1 class="text-7xl px-1 pt-20 font-bold text-green-900 font-great-vibes capitalize"><%= @article.title %></h1>
+          <h1 class="text-lg px-1 font-bold capitalize">by <%= current_nutritionist.username %></h1>
+          <u class="text-blue-500"><%= link_to 'Edit', edit_article_path(@article) %></u> | <u class="text-red-600"><%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></u>
+        </center>
+      </div>
+        <div class="overflow-auto h-xl pl-2">
+          <h2><%= @article.caption %></h2>
+        </div>
+    </div>
 
-<%= render 'comments/acomments', commentable: @article %>
-<%= render 'comments/aform', commentable: @article %>
-
+    <div class="px-2">
+      <h1 class="font-bold text-2xl text-red-600">Comments</h1><br/>
+      <div class="overflow-auto h-xl">
+        <%= render 'comments/acomments', commentable: @article %>
+      <div><br/>
+      <%= render 'comments/aform', commentable: @article %>
+    </div>
+</div>

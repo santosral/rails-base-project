@@ -9,7 +9,10 @@ module.exports = {
     extend: {
       fontFamily: {
         'great-vibes': ['"Great Vibes"', 'cursive']
-      }
+      },
+      height: {
+        xl: '450px',
+      },
     },
   },
   variants: {

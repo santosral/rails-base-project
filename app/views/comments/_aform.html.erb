@@ -3,8 +3,9 @@
     <%= f.hidden_field :article_id, value: commentable.id %>
   </div>
 
-    <%= f.text_field :body, placeholder:"Add a comment", class: "border-2 text-xs px-1 border-gray-500" %>
-    <%= button_tag(type: 'submit', class: "text-white text-xs bg-red-500 border-0 py-0.5 px-2 focus:outline-none hover:bg-red-600 rounded") do %>
+    <p><%= f.text_field :body, placeholder:"Add a comment", class: "border-2 text-md px-1 border-gray-500" %></p>
+    <br/>
+    <p><%= button_tag(type: 'submit', class: "text-white text-md bg-red-500 border-0 py-0.5 px-2 focus:outline-none hover:bg-red-600 rounded") do %>
       Post Comment
-    <% end %>
+    <% end %></p>
 <% end %>

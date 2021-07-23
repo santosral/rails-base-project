@@ -1,8 +1,18 @@
-<h1><%= @selected_user.username %>'s POSTS</h1>
-<% @articles.each do |article| %>
-  <table>
-      <tr>
-        <td><%= link_to article.caption, nutritionist_article_path(@selected_user, article) %></td>
-      </tr>
-    </table>
-<% end %>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<h1 class="px-2 text-4xl mt-10 font-bold text-red-600"><%= @selected_user.username %>'s Articles</h1><br/>
+<div class="grid px-2 grid-cols-3 gap-3">
+  <% @articles.each do |article| %>
+    <div class="mx-auto my-auto border-2 border-red-600 rounded-md">
+      <div class="box-border bg-gradient-to-b from-yellow-400 h-52 w-72 border-b-2 border-red-600">
+      <center>
+      <h1 class="text-5xl px-1 pt-20 font-bold text-green-900 font-great-vibes opacity-100 hover:opacity-50 capitalize"><%= link_to article.title, nutritionist_article_path(@selected_user, article) %></h1>
+      <h1 class="text-md px-1 font-bold capitalize">by <%= @selected_user.username %></h1>
+      </center>
+      </div>
+      <h1 class="text-lg px-1 font-bold capitalize">Article</h1>
+    </div>
+  <% end %>
+</div>

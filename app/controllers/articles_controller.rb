@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 
     if @article.valid?
       @article.save
-      redirect_to article_path
+      redirect_to article_path(@article)
     else
       render :new
     end
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
     @article = current_nutritionist.articles.find(params[:id])
 
     if @article.update(article_params)
-      redirect_to root_path
+      redirect_to article_path(@article)
     else
       render :edit
     end

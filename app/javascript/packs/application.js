@@ -21,3 +21,25 @@ require("controllers")
 
 require("trix")
 require("@rails/actiontext")
+
+// Flash Messages
+document.addEventListener('turbolinks:load', () => {
+  const flashMessage = document.querySelector('#notice_wrapper');
+  const fadeOutFlashMessage = () => {
+    const timer_id = setInterval(() => {
+      const opacity = flashMessage.style.opacity;
+
+      if (opacity > 0) {
+          flashMessage.style.opacity = opacity - 0.02;
+        } else {
+          flashMessage.style.display = 'none';
+          clearInterval(timer_id);
+        };
+      }, 50);
+    }
+  
+    if (flashMessage !== null) {
+      flashMessage.style.opacity = 1;
+      setTimeout(fadeOutFlashMessage, 4000);
+    };
+  });

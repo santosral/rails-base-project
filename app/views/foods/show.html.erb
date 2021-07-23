@@ -11,7 +11,7 @@
 
   <div class="box-border flex mt-5 w-3/4 h-auto px-5 py-5 mx-auto bg-white border-4 border-red-600">
     <div class="flex">
-      <%= cl_image_tag(@food.food_key, :height=>300, :aspect_ratio=>"1.5", :crop=>"fill")%>
+      <%= cl_image_tag(@food.food_key, :width=>300, :height=>300)%>
     </div>
     <div class="flex-column lg:w-1/2 w-full lg:pl-10 mt-3 space-y-1.5 ">
       <h1 class="text-red-600 text-4xl title-font font-bold mb-1 capitalize font-great-vibes"><%= @food.food_name %></h1>

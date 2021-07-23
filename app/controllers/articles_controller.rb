@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 
     if @article.valid?
       @article.save
-      redirect_to root_path
+      redirect_to article_path
     else
       render :new
     end

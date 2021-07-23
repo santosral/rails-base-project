@@ -17,9 +17,16 @@
   <% end %>
   <%= link_to 'Log out', destroy_admin_session_path %>
 <% else %>
-  <div class="landing_page">
-    <h1 class='text_hero'>bouffage</h1>
-    
+  <div class="bg-red-600 w-screen h-screen overflow-hidden">
+    <div class="absolute z-10 top-1/4 ml-20 w-2/5 h-auto">
+    <%= image_tag("bouffage.png", :alt => "bouffage") %> 
+    <p class='text-3xl text-white tracking-wide ml-10' >Connecting people who loves food and health.</p>
+    <button class='bg-yellow-400 rounded p-1 text-xl tracking-wide text-black py-4 px-10 ml-10 mt-6' ><%= link_to 'Sign Up', new_user_registration_path %></button>
+    <button class='bg-yellow-400 rounded p-1 text-xl tracking-wide text-black py-4 px-10 ml-4 mt-6' ><%= link_to 'Sign In', new_user_session_path %></button><br>
+    <button class='bg-green-500 rounded p-1 text-xl tracking-wide text-black py-4 px-10 ml-10 mt-6' ><%= link_to 'Sign up as Nutritionist', new_nutritionist_registration_path %></button><br>
+    <button class='bg-green-500 rounded p-1 text-xl tracking-wide text-black py-4 px-10 ml-10 mt-4' ><%= link_to 'Sign in as Nutritionist', new_nutritionist_session_path %></button>
+    </div>
+    <%= image_tag("img_1.png", :alt => "bouffage", :class => 'w-2/4 h-screen float-right mr-8') %>
   </div>
 <% end %>
 

@@ -14,25 +14,13 @@
  *= require_self
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap");
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
+p {
   font-family: "Open Sans", sans-serif;
 }
-
 a {
-  text-decoration: none;
-  color: var(--text-color);
-}
-
-ul {
-  list-style: none;
+  font-family: "Open Sans", sans-serif;
 }
 
 h1 {

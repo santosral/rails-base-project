@@ -1,17 +1,3 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
-.landing_page {
-    width: 100%;
-    height: 100vh;
-    background: url("bg_image.jpg") rgba(0, 0, 0, 0.404);
-    background-size: cover;
-    background-position: center center;
-    background-blend-mode: multiply;
-}
-
-.text_hero {
-    padding: 15vw 0 0 15vw;
-    font-size: 5rem;
-}

@@ -16,12 +16,19 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap");
 
-h1 {
-  font-family: "Great Vibes", cursive;
-}
 p {
   font-family: "Open Sans", sans-serif;
 }
 a {
   font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+    font-family: "Roboto Mono", monospace;
+}
+
+.close {
+  position: relative;
+  top: 60px;
+  left: 800px;
 }

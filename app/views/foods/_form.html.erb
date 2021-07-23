@@ -1,4 +1,9 @@
-<%= form_with model: food do |f| %>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>@import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);</style>
+
+<%= form_with model: food, local: true do |f| %>
   <% food.errors.full_messages_for(:user_username).each do |message| %>
     <%= message %>
   <% end %>
@@ -19,23 +24,28 @@
 
   <%= f.hidden_field :food_key, value: "#{SecureRandom.hex(10)}" %>
 
-  <div class="field">
-    <%= f.file_field :image %>
+  <div class="box-border flex mt-5 w-3/4 h-auto px-5 py-5 mx-auto bg-white border-4 border-red-600">
+    <div class="flex">
+      <img alt="ecommerce" class="lg:w-full w-full lg:h-auto object-cover object-center rounded" src="https://dummyimage.com/300x400">
+    </div>
+    <div class="flex-column lg:w-1/2 w-full lg:pl-10 mt-3 space-y-1.5 ">
+      <h1 class="text-red-600 text-4xl title-font font-bold mb-1 capitalize">Create Post</h1>
+      <h2 class="text-sm space-x-1"> Posted by: <strong> <%= current_user.username %></strong><h2>
+      <p class=""><%= f.file_field :image %></p><br/>
+      <p><%= f.text_area :caption, placeholder: "Write a caption", autofocus: true, class: "leading-relaxed border-2" %></p><br/>
+      <p><%= f.text_field :recipe_url, placeholder: "Share recipe url", autofocus: true, class: "leading-relaxed border-2" %></p>
+      <p><a href="" class="opacity-100 hover:opacity-50 inline-block text-sm text-blue-500 leading-none border-b border-blue-500"></a></p>
+      <br/>
+      <%= button_tag(type: 'submit', class: "text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded") do %>
+      Upload Details
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :caption %><br />
-    <%= f.text_area :caption, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :recipe_url %><br />
-    <%= f.text_field :recipe_url, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Post" %>
-  </div>
-
 <% end %>
+
+
+
+
+
+
 

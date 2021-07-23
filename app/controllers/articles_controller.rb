@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 
     if @article.valid?
       @article.save
-      redirect_to root_path
+      redirect_to article_path
     else
       render :new
     end
@@ -49,6 +49,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:nutritionist_username, :caption, :source_url)
+    params.require(:article).permit(:nutritionist_username, :title, :caption, :source_url)
   end
 end

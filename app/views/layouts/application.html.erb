@@ -12,12 +12,33 @@
   <body class="relative min-h-screen flex overflow-hidden">
     <% if user_signed_in? || nutritionist_signed_in? || admin_signed_in? %>
       <%= render 'home/sidenav' %>
+      <% if notice %>
+        <div id="notice_wrapper">
+          <p class="notice"><%= notice %></p>
+        </div>
+      <% elsif alert %>
+        <div id="notice_wrapper">
+          <p class="alert"><%= alert %></p>
+        </div>
+      <% end %>
+      <div class="w-3/4">
+        <%= yield %>
+      </div>
+    <% else %>
+      <% if notice %>
+        <div id="notice_wrapper">
+          <p class="notice"><%= notice %></p>
+        </div>
+      <% elsif alert %>
+        <div id="notice_wrapper">
+          <p class="alert"><%= alert %></p>
+        </div>
+      <% elsif @message %>
+        <div id="notice_wrapper">
+          <p class="error_messages"><%= @message %></p>
+        </div>
+      <% end %>
+      <%= yield %>
     <% end %>
-    
-  <div class="w-3/4">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </div>
   </body>
 </html>

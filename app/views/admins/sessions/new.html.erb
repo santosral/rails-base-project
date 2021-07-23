@@ -1,26 +1,37 @@
-<h2>Log in</h2>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway&display=swap" rel="stylesheet">
+<div class='bg-red-600 w-screen h-screen flex justify-center items-center'>
+    <div class='absolute p-20 rounded-lg bg-white w-2/4 shadow-2xl' >
+      <center>
+      <h2 class='mb-8 font-great-vibes text-7xl text-red-600 font-bold' >Sign in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="field">
+          <%= f.text_field :username, autofocus: true, autocomplete: "username", placeholder: 'Username', :class => 'bg-gray-100 w-full p-3 rounded-lg' %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password', :class => 'bg-gray-100 w-full p-3 rounded-lg mt-5' %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me, :class => 'font-raleway mt-5 mr-2' %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "Sign in", :class => 'bg-gray-100 w-full p-3 rounded-lg mt-5 font-raleway tracking-wider text-lg bg-yellow-400 font-bold' %>
+        </div>
+      <% end %>
+
+      <p class="mt-5">                  
+        Already have an account? <br>
+        <u class='mt-5 text-blue-600'><%= render "admins/shared/links" %></u>                 
+      </p>
+    </center>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+</div>

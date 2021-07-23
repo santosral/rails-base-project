@@ -21,3 +21,23 @@
   top: 10px;
   right: 20px;
 }
+
+/* Flash Messages */
+#notice_wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(17, 17, 17, 0.61);
+  margin-right: 15%;
+}
+.alert,
+.notice,
+.error_messages {
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.25rem;
+}

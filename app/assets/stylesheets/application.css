@@ -38,3 +38,9 @@ ul {
 h1 {
     font-family: "Roboto Mono", monospace;
 }
+
+.close {
+  position: relative;
+  top: 60px;
+  left: 800px;
+}

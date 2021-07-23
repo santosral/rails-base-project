@@ -1,15 +1,11 @@
 <% if user_signed_in? %>
-  <h1 class="text-lg text-blue-500">Hi <%= @cur_user.username %>! welcome to the newsfeed of bouffage</h1>
-  <%= link_to 'Log out', destroy_user_session_path %>
-  <%= render 'newsfeed' %>
-  <%= link_to 'New Post', new_food_path %>
+  <h1 class="px-2 text-2xl font-bold text-red-600">Welcome, <%= @cur_user.username %>!</h1><br/>
+  <div class="grid px-2 grid-cols-3 gap-3"><%= render 'newsfeed' %></div>
 <% elsif nutritionist_signed_in? %>
-  <h1>Hi <%= @cur_user.username %>! welcome newsfeed of bouffage</h1>
-  <%= link_to 'Log out', destroy_nutritionist_session_path %>
-  <%= render 'newsfeed' %>
-  <%= link_to 'New Post', new_article_path %>
+  <h1 class="px-2 text-2xl font-bold text-red-600">Welcome, <%= @cur_user.username %>!</h1><br/>
+  <div class="grid px-2 grid-cols-3 gap-3"><%= render 'newsfeed' %></div>
 <% elsif admin_signed_in? %>
-  <h1>Hi administrator these doctors are pending for approval</h1>
+  <h1 class="px-2 text-2xl font-bold text-red-600">Hi administrator these doctors are pending for approval</h1>
   <% @nut.each do |nutritionist| %>
     <ul>
       <li><%= nutritionist.username %></li>

@@ -1,10 +1,8 @@
-<h2>Comments</h2>
 <% commentable.comments.each do |comment| %>
-  <p>
-    <strong><%= comment.commenter %></strong><br>
-    <%= comment.body %>
-    <% if @cur_user.username == @food.user_username || comment.commenter == @cur_user.username %>
-    <%= button_to 'Delete', comment_path(comment), method: :delete %>
-    <% end %>
-  </p>
+    <p class="text-xs"><strong class="text-sm"><%= comment.commenter %></strong></p>
+    <p class="text-xs"><%= comment.body %></p>
+    <p class="text-xs text-blue-500"><%= comment.created_at.strftime("%b-%d at %I %p") %> |
+    <u class="text-red-600"><% if @cur_user.username == @food.user_username || comment.commenter == @cur_user.username %>
+    <%= link_to 'Delete', comment_path(comment), method: :delete %>
+    <% end %></u></p>
 <% end %>

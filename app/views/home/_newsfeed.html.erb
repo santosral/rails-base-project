@@ -1,17 +1,15 @@
 <% @foods_and_articles.each do |post| %>
   <% if post.attributes.has_key? 'user_username' %>
-    <table>
-      <tr>
-        <% if user_signed_in? && current_user.id == post.user_id %>
-          <td><%= link_to post.user_username, foods_path %></td>
-          <td><%= link_to post.food_name, food_path(post.id) %></td>
-        <% else %>
-          <td><%= link_to post.user_username, user_path(post.user_id) %></td>
-          <td><%= link_to post.food_name, user_food_path(post.user_id, post.id) %></td>
-        <% end %>
-        <td><%= cl_image_tag(post.food_key, :width=>100, :height=>100)%></td>
-      </tr>
-    </table>
+          <div class="mx-auto my-auto border-2 border-red-600 rounded-md text-red-600">
+            <center><%= cl_image_tag(post.food_key, :height=>200, :aspect_ratio=>"1.5", :crop=>"fill")%></center>
+            <% if user_signed_in? && current_user.id == post.user_id %>
+              <h1 class="text-lg px-1 font-bold capitalize"><%= link_to post.food_name, food_path(post.id) %></h1>
+              <h2 class="text-sm px-1 text-black">Posted by: <u class="text-blue-500"><%= link_to post.user_username, foods_path %></u></h2>
+            <% else %>
+              <h1 class="text-lg px-1 font-bold capitalize"><%= link_to post.food_name, user_food_path(post.user_id, post.id) %></h1>
+              <h2 class="text-sm px-1 text-black">Posted by: <u class="text-blue-500"><%= link_to post.user_username, user_path(post.user_id) %></u></h2>
+            <% end %>
+          </div>
   <% else %>
     <table>
       <tr>

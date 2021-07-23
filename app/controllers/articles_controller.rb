@@ -49,6 +49,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:nutritionist_username, :caption, :source_url)
+    params.require(:article).permit(:nutritionist_username, :title, :caption, :source_url)
   end
 end

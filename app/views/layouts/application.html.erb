@@ -13,6 +13,7 @@
     <% if user_signed_in? || nutritionist_signed_in? || admin_signed_in? %>
       <%= render 'home/sidenav' %>
     <% end %>
+    
   <div class="w-3/4 w-3/4 overflow-y-auto mt-10">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

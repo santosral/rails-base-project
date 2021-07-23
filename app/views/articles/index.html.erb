@@ -2,8 +2,7 @@
 <% @articles.each do |article| %>
   <table>
       <tr>
-        <td><%= link_to article.caption, article_path(article) %></td>
-        <td><%= article.source_url %></td>
+        <td><%= link_to article.title, article_path(article) %></td>
       </tr>
   </table>
 <% end %>

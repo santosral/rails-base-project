@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
   <h1 class="px-2 text-4xl mt-10 font-bold text-red-600">Welcome, <%= @cur_user.username %>!</h1><br/>
-  <div class="grid px-2 grid-cols-3 gap-3 overflow-y-auto h-screen"><%= render 'newsfeed' %></div>
+  <div class="grid px-2 grid-cols-3 gap-3"><%= render 'newsfeed' %></div>
 <% elsif nutritionist_signed_in? %>
   <h1 class="px-2 text-4xl mt-10 font-bold text-red-600">Welcome, <%= @cur_user.username %>!</h1><br/>
-  <div class="grid px-2 grid-cols-3 gap-3 overflow-y-auto h-screen"><%= render 'newsfeed' %></div>
+  <div class="grid px-2 grid-cols-3 gap-3"><%= render 'newsfeed' %></div>
 <% elsif admin_signed_in? %>
   <h1 class="px-2 text-4xl mt-10 font-bold text-red-600">Pending Approvals</h1>
     <table class="shadow-lg bg-white ml-3 mt-2 text-center">

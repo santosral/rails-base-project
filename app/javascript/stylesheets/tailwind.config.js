@@ -8,9 +8,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'great-vibes': ['Great Vibes', 'cursive'],
+        'great-vibes': ['"Great Vibes"', 'cursive'],
         'raleway': ['Raleway', 'sans-serif'],
-      }
+      },
+      height: {
+        xl: '450px',
+      },
     },
   },
   variants: {

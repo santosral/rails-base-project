@@ -13,18 +13,16 @@
   
     <%= f.text_field :nutritionist_username, autofocus: true, value:current_nutritionist.username, placeholder:"username", class:"hidden" %>
 
-    <div class="field">
-      <%= f.label :title %><br />
-      <%= f.text_area :title, autofocus: true %>
-    </div>
+    <div class="field px-2">
+      <%= f.text_field :title, placeholder: "Write the title of article", autofocus: true, class: "leading-relaxed border-4 border-red-600" %>
+    </div><br/>
 
-    <div class="field">
-      <%= f.label :caption %><br />
+    <div class="field overflow-auto h-xl pl-2 pr-2">
       <%= f.rich_text_area :caption, autofocus: true %>
     </div>
-  
-    <div class="actions">
-      <%= f.submit "Post" %>
+
+    <div class="field h-xl pl-2 pr-2">
+      <%= f.submit "Update Post", class: "w-full bg-red-600 text-white opacity-100 hover:opacity-50" %>
     </div>
   
-  <% end %>
+<% end %>

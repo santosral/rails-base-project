@@ -1,3 +1,7 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
 <% @foods_and_articles.each do |post| %>
   <% if post.attributes.has_key? 'user_username' %>
           <div class="mx-auto my-auto border-2 border-red-600 rounded-md text-red-600">
@@ -11,14 +15,23 @@
             <% end %>
           </div>
   <% else %>
-          <div class="mx-auto my-auto border-2 border-red-600 rounded-md text-red-600">
-            <img alt="ecommerce" class="lg:w-full w-full lg:h-auto object-cover object-center rounded" src="https://dummyimage.com/300x200">
+          <div class="mx-auto my-auto border-2 border-red-600 rounded-md">
             <% if nutritionist_signed_in? && current_nutritionist.id == post.nutritionist_id %>
-              <h1 class="text-lg px-1 font-bold capitalize"><%= link_to post.title, article_path(post.id) %></h1>
-              <h2 class="text-sm px-1 text-black">Posted by: <u class="text-blue-500"><%= link_to post.nutritionist_username, articles_path %></u></h2> 
+              <div class="box-border bg-gradient-to-b from-yellow-400 h-52 w-72 border-b-2 border-red-600">
+                <center>
+                <h1 class="text-5xl px-1 pt-20 font-bold text-green-900 font-great-vibes opacity-100 hover:opacity-50 capitalize"><%= link_to post.title, article_path(post.id) %></h1>
+                <h1 class="text-md px-1 font-bold capitalize">by <u><%= link_to post.nutritionist_username, articles_path %></u></h1>
+                </center>
+              </div>
+                <h1 class="text-lg px-1 font-bold capitalize">Article</h1>
             <% else %>
-              <h1 class="text-lg px-1 font-bold capitalize"><%= link_to post.title, nutritionist_article_path(post.nutritionist_id, post.id) %></h1>
-              <h2 class="text-sm px-1 text-black">Posted by: <u class="text-blue-500"><%= link_to post.nutritionist_username, nutritionist_path(post.nutritionist_id) %></u></h2>
+              <div class="box-border bg-gradient-to-b from-yellow-400 h-52 w-72 border-b-2 border-red-600">
+                <center>
+                <h1 class="text-5xl px-1 pt-20 font-bold text-green-900 font-great-vibes opacity-100 hover:opacity-50 capitalize"><%= link_to post.title, nutritionist_article_path(post.nutritionist_id, post.id) %></h1>
+                <h1 class="text-md px-1 font-bold capitalize">by <u><%= link_to post.nutritionist_username, nutritionist_path(post.nutritionist_id) %></u></h1>
+                </center>
+              </div>
+                <h1 class="text-lg px-1 font-bold capitalize">Article</h1>
             <% end %>
         </div>
   <% end %>

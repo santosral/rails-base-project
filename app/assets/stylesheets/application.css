@@ -14,10 +14,12 @@
  *= require_self
  */
 
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap");
+
 .close {
-  position: relative;
-  top: 60px;
-  left: 800px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
 /* Flash Messages */

@@ -9,28 +9,29 @@
                 </svg></a>
   </div>
 
-  <div class="box-border flex mt-5 w-3/4 h-auto px-5 py-5 mx-auto bg-white border-4 border-red-600">
-    <div class="flex">
-      <%= cl_image_tag(@food.food_key, :width=>300, :height=>300)%>
+  <div class="box-border flex w-full h-full px-5 py-5 bg-white border-8 border-red-600">
+    <div class="flex h-auto">
+      <%= cl_image_tag(@food.food_key, :width=>400, :crop=>"crop",:class=>"lg:rounded")%>
     </div>
     <div class="flex-column lg:w-1/2 w-full lg:pl-10 mt-3 space-y-1.5 ">
-      <h1 class="text-red-600 text-4xl title-font font-bold mb-1 capitalize font-great-vibes"><%= @food.food_name %></h1>
-      <h2 class="text-sm space-x-1"> Posted by: <strong> <%= current_user.username %></strong>
+      <h1 class="text-red-600 text-5xl title-font font-bold mb-1 capitalize font-great-vibes"><%= @food.food_name %></h1>
+      <h2 class="text-md space-x-1"> Posted by: <strong> <%= current_user.username %></strong>
       <u class="text-blue-500"><%= link_to 'Edit', edit_food_path(@food) %></u> | <u class="text-red-600"><%= link_to 'Delete', food_path(@food), method: :delete, data: { confirm: "Are you sure?" } %></u>
       <h2>
       <p class="leading-relaxed"><%= @food.caption %></p>
-      <p><a href="<%= @food.recipe_url %>" class="opacity-100 hover:opacity-50 inline-block text-sm text-blue-500 leading-none border-b border-blue-500">Checkout recipe here<i class="mdi mdi-arrow-right"></i></a></p>
+      <p><a href="<%= @food.recipe_url %>" class="opacity-100 hover:opacity-50 inline-block text-md text-blue-500 leading-none border-b border-blue-500">Checkout recipe here<i class="mdi mdi-arrow-right"></i></a></p>
       <br/>
-      <p class="text-sm text-red-600 font-bold">Nutrional Facts:</p>
+      <p class="text-md text-red-600 font-bold">Nutrional Facts:</p>
         <% @nutrition.each do |nutrition|%>
           <p class="text-sm"> <strong><%= nutrition.label %></strong> <%= nutrition.quantity %> <%= nutrition.unit %></p>
         <% end %><br/>
         <p class="font-bold text-sm text-red-600">Comments</p>
-        <div class="overflow-auto h-10">
-        <%= render 'comments/comments', commentable: @food %>
+        <div class="overflow-auto h-30">
+          <%= render 'comments/comments', commentable: @food %>
         </div><br/>
-        <%= render 'comments/form', commentable: @food %>
+          <%= render 'comments/form', commentable: @food %>
     </div>
+      
   </div>
 
 

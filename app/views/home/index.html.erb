@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
-  <h1 class="px-2 text-2xl font-bold text-red-600">Welcome, <%= @cur_user.username %>!</h1><br/>
+  <h1 class="px-2 text-4xl mt-10 font-bold text-red-600">Welcome, <%= @cur_user.username %>!</h1><br/>
   <div class="grid px-2 grid-cols-3 gap-3"><%= render 'newsfeed' %></div>
 <% elsif nutritionist_signed_in? %>
-  <h1 class="px-2 text-2xl font-bold text-red-600">Welcome, <%= @cur_user.username %>!</h1><br/>
+  <h1 class="px-2 text-4xl mt-10 font-bold text-red-600">Welcome, <%= @cur_user.username %>!</h1><br/>
   <div class="grid px-2 grid-cols-3 gap-3"><%= render 'newsfeed' %></div>
 <% elsif admin_signed_in? %>
   <h1 class="px-2 text-2xl font-bold text-red-600">Hi administrator these doctors are pending for approval</h1>
@@ -17,10 +17,10 @@
   <% end %>
   <%= link_to 'Log out', destroy_admin_session_path %>
 <% else %>
-  <div class="bg-red-600 w-screen h-screen overflow-hidden">
+  <div class="absolute bg-red-600 w-screen h-screen overflow-hidden">
     <div class="absolute z-10 top-1/4 ml-20 w-2/5 h-auto">
     <%= image_tag("bouffage.png", :alt => "bouffage") %> 
-    <p class='text-3xl text-white tracking-wide ml-10' >Connecting people who loves food and health.</p>
+    <p class='text-3xl text-white tracking-wide ml-10' >Connecting people who loves food and health. Capturing Food moments.</p>
     <button class='bg-yellow-400 rounded p-1 text-xl tracking-wide text-black py-4 px-10 ml-10 mt-6' ><%= link_to 'Sign Up', new_user_registration_path %></button>
     <button class='bg-yellow-400 rounded p-1 text-xl tracking-wide text-black py-4 px-10 ml-4 mt-6' ><%= link_to 'Sign In', new_user_session_path %></button><br>
     <button class='bg-green-500 rounded p-1 text-xl tracking-wide text-black py-4 px-10 ml-10 mt-6' ><%= link_to 'Sign up as Nutritionist', new_nutritionist_registration_path %></button><br>

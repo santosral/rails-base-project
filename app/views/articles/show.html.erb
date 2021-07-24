@@ -6,7 +6,7 @@
     <div class="col-span-2 border-r-4 border-red-600">
       <div class="box-border bg-gradient-to-b from-yellow-400 h-52 w-full">
         <center>
-          <h1 class="text-7xl px-1 pt-20 font-bold text-green-900 font-great-vibes capitalize"><%= @article.title %></h1>
+          <h1 class="text-7xl px-1 pt-20 font-bold text-green-900 font-great-vibes capitalize"><%= @article.title.truncate_words(2) %></h1>
           <h1 class="text-lg px-1 font-bold capitalize">by <%= current_nutritionist.username %></h1>
           <u class="text-blue-500"><%= link_to 'Edit', edit_article_path(@article) %></u> | <u class="text-red-600"><%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></u>
         </center>

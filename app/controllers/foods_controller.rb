@@ -31,7 +31,6 @@ class FoodsController < ApplicationController
   def nutritional_info
     @foods = current_user.foods.all
     @food = @foods.where(food_name: nil).last
-    # @food.food_group = params[:food_group]
     @food.food_name = params[:food_name]
     @food.save
     url_food = "https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=#{params[:food_name]}"

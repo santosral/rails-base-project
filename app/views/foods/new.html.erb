@@ -6,7 +6,7 @@
 <% if @foods_recognized != nil %>
   <div class="box-border flex w-full h-full px-5 py-5 bg-white border-8 border-red-600">
     <div class="flex h-auto">
-      <%= cl_image_tag(@food.food_key, :width=>400, :crop=>"crop",:class=>"lg:rounded")%>
+      <%= cl_image_tag(@food.food_key, :width=>400, :crop=>"cover",:class=>"lg:rounded")%>
     </div>
     <div class="flex-column lg:w-1/2 w-full lg:pl-10 mt-3 space-y-1.5 ">
       <h1 class="text-red-600 text-5xl title-font font-bold mb-1 capitalize font-great-vibes">Food Name</h1>

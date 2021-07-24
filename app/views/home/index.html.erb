@@ -5,17 +5,29 @@
   <h1 class="px-2 text-4xl mt-10 font-bold text-red-600">Welcome, <%= @cur_user.username %>!</h1><br/>
   <div class="grid px-2 grid-cols-3 gap-3"><%= render 'newsfeed' %></div>
 <% elsif admin_signed_in? %>
-  <h1 class="px-2 text-2xl font-bold text-red-600">Hi administrator these doctors are pending for approval</h1>
-  <% @nut.each do |nutritionist| %>
-    <ul>
-      <li><%= nutritionist.username %></li>
-      <li><%= nutritionist.email %></li>
-      <li><%= nutritionist.license_num %></li>
-      <li><%= nutritionist.years_exp %></li>
-      <li><%= link_to "Approve", approve_path(nutritionist), method: :get %>
-    </ul>
-  <% end %>
-  <%= link_to 'Log out', destroy_admin_session_path %>
+  <h1 class="px-2 text-4xl mt-10 font-bold text-red-600">Pending Approvals</h1>
+    <table class="shadow-lg bg-white ml-3 mt-2 text-center">
+      <thead>
+        <tr>
+          <th class= "bg-yellow-400 border border-black text-left px-8 py-4">Username</th>
+          <th class= "bg-yellow-400 border border-black text-left px-8 py-4">Email</th>
+          <th class= "bg-yellow-400 border border-black text-left px-8 py-4">License No.</th>
+          <th class= "bg-yellow-400 border border-black text-left px-8 py-4">Years of Experience</th>
+          <th class= "bg-yellow-400 border border-black text-left px-8 py-4">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @nut.each do |nutritionist| %>
+        <tr>
+          <td class="border border-black px-8 py-4"><%= nutritionist.username %></td>
+          <td class="border border-black px-8 py-4"><%= nutritionist.email %></td>
+          <td class="border border-black px-8 py-4"><%= nutritionist.license_num %></td>
+          <td class="border border-black px-8 py-4"><%= nutritionist.years_exp %></td>
+          <td class="border border-black px-8 py-4 text-blue-500 font-bold opacity-100 hover:opacity-50"><%= link_to "Approve", approve_path(nutritionist), method: :get %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 <% else %>
   <div class="absolute bg-red-600 w-screen h-screen overflow-hidden">
     <div class="absolute z-10 top-1/4 ml-20 w-2/5 h-auto">

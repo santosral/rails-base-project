@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     doctor.approved = true
     doctor.save
     DoctorMailer.new_nutritionist_account_approved(doctor).deliver
-    @success = "Doctor's registration approved!"
+    @success = "Nutritionist's registration approved!"
     redirect_to root_path, notice: @success
   end
 end

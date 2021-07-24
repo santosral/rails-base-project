@@ -2,7 +2,7 @@
 <div class="grid px-2 grid-cols-3 gap-3">
   <% @foods.each do |food| %>
     <div class="mx-auto my-auto border-2 border-red-600 rounded-md text-red-600">
-      <center><%= cl_image_tag(food.food_key, :width=>300, :height=>300)%></center>
+      <center><%= cl_image_tag(food.food_key, :height=>300, :aspect_ratio=>"1.5", :crop=>"fill")%></center>
       <h1 class="text-lg px-1 font-bold capitalize"><%= link_to food.food_name, user_food_path(@selected_user, food) %></h1>
       <h2 class="text-sm px-1 text-black"><%= food.caption %></h2>
     </div>

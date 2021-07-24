@@ -1,5 +1,5 @@
 <h1 class="px-2 text-2xl font-bold text-red-600"><%= @selected_user.username %>'s Foods</h1><br/>
-<div class="grid px-2 grid-cols-3 gap-3">
+<div class="grid px-2 grid-cols-3 gap-3 overflow-y-auto h-screen">
   <% @foods.each do |food| %>
     <div class="mx-auto my-auto border-2 border-red-600 rounded-md text-red-600">
       <center><%= cl_image_tag(food.food_key, :height=>300, :aspect_ratio=>"1.5", :crop=>"fill")%></center>

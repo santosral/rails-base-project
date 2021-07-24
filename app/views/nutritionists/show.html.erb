@@ -2,6 +2,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
+<div class='overflow-y-auto h-screen'>
 <h1 class="px-2 text-4xl mt-10 font-bold text-red-600"><%= @selected_user.username %>'s Articles</h1><br/>
 <div class="grid px-2 grid-cols-3 gap-3">
   <% @articles.each do |article| %>
@@ -15,4 +16,5 @@
       <h1 class="text-lg px-1 font-bold capitalize">Article</h1>
     </div>
   <% end %>
+</div>
 </div>

@@ -1,3 +1,4 @@
+<div class='overflow-y-auto h-screen'>
 <h1 class="px-2 text-4xl font-bold text-red-600 mt-10">My Foods</h1><br/>
 <div class="grid px-2 grid-cols-3 gap-3">
   <% @foods.each do |food| %>
@@ -7,4 +8,5 @@
       <h2 class="text-sm px-1 text-black"><%= food.caption %></h2>
     </div>
   <% end %>
+</div>
 </div>
